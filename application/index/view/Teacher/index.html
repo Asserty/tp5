@@ -1,0 +1,50 @@
+<!-- hello I am V of  -->
+<!-- 在v层中使用的函数需要类似于这样使用 -->
+<!-- {:var_dump($teachers)} -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>教师管理</title>
+</head>
+<body>
+	<table border="1" align="center">
+		<tr>
+			<th>序号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>邮箱</th>
+			<th>用户名</th>
+			<th>删除</th>
+		</tr>
+		<!-- volist标签，name属性表示模板赋值的变量名称，不可随意改变
+			id表示当前的循环变量，可以随意指定，但不要和name属性冲突
+			offset='5' length='10' 输出其中的5~10数据
+			mod属性--输出偶数记录，控制换行，
+			empty 为空的时候输出提示，不支持直接传入html语法
+			key 属性 输出循环变量，没有指定key属性，默认使用循环变量i，
+			如果要输出数组的索引，可以直接使用key变量，这个key是由数据本身绝得，
+			而不是循环控制
+
+		 	
+
+		 -->
+
+		{volist name="teachers" id="teacher" key="key"}
+		<tr>
+			<td>{$key}</td>
+			<td>{$teacher->getData('name')}</td>
+			<td>{eq name="$teacher->getData('sex')" value='0'}男{else /}女{/eq}</td>
+			
+
+			<td>{$teacher->getData('email')}</td>
+			<td>{$teacher->getData('username')}</td>
+			<!--<td><a href="delete">删除</a></td>-->
+			<td><a href="{:url('Teacher/delete',array('id'=>$teacher->getData('id')))}">删除</a></td>
+
+		</tr>
+		{/volist}
+		
+	</table>
+</body>
+</html>
