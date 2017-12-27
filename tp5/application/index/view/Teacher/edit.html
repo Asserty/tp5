@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>编辑信息</title>
+	{load href="/tp5/public/static/bootstrap-3.3.7/css/bootstrap.min.css"}
+</head>
+<body class="container">
+<form action="{:url('update')}" method="post">
+	<p>序号：<input type="text" name="id" value="{$teacher->getData('id')}" readonly=""> </p>
+	<p>姓名：<input type="text" name="name" value="{$teacher->getData('name')}"></p>
+	<p>性别：
+	<select name="sex">
+		<option value="0" {eq name="$teacher->getData('sex')" value="0" } selected {/eq}>男</option>
+		<option value="1" {eq name="$teacher->getData('sex')" value="1" } selected {/eq}>女</option>
+
+	</select>
+	</p>
+	<p>邮箱：<input type="text" name="email" value="{$teacher->getData('email')}"></p>
+	<p>用户名：<input type="text" name="username" value="{$teacher->getData('username')}"></p>
+	<input type="submit" name="" value="更新数据">
+	
+</form>
+</div>
+
+
+</body>
+</html>
